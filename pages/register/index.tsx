@@ -37,6 +37,7 @@ export default function Register() {
         padding={8}
         rounded={6}
         w="350px"
+        backgroundColor="white"
       >
         <Heading as="h1" fontSize="lg" textAlign="center">
           新規登録
@@ -77,7 +78,7 @@ export default function Register() {
             fontSize="lg"
             mt={4}
             w="100%"
-            backgroundColor="orange"
+            backgroundColor="#4169e1"
             color="white"
             type="submit"
           >

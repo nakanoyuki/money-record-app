@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Header() {
   return (
-    <header>
+    <Stack as="header" position="fixed" backgroundColor="white" width="100%">
       <Text fontSize="xs" color="#707070" pl="16px">
         収支管理アプリ
       </Text>
@@ -12,10 +12,13 @@ export default function Header() {
         alignItems="center"
         width="100%"
         justifyContent="space-between"
-        p="16px"
+        p="0 16px 16px"
+        borderBottom="1px solid rgb(217, 217, 217)"
+        color="#4169e1"
+        fontWeight="bold"
       >
         <Link href="/">Money Record</Link>
-        <Flex alignItems="center" width="300px" justifyContent="space-between">
+        <Flex alignItems="center" width="320px" justifyContent="space-between">
           <Link href="/login">ログイン</Link>
           <Button
             as="a"
@@ -30,6 +33,6 @@ export default function Header() {
           </Button>
         </Flex>
       </Flex>
-    </header>
+    </Stack>
   );
 }

@@ -40,6 +40,7 @@ const Login = () => {
         padding={8}
         rounded={6}
         w="350px"
+        backgroundColor="white"
       >
         <Heading as="h1" fontSize="lg" textAlign="center">
           ログイン
@@ -79,7 +80,7 @@ const Login = () => {
             fontSize="lg"
             mt={4}
             w="100%"
-            backgroundColor="orange"
+            backgroundColor="#4169e1"
             color="white"
             type="submit"
           >

@@ -10,11 +10,12 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
-
+  const router = useRouter();
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -24,6 +25,7 @@ export default function Register() {
         registerEmail,
         registerPassword
       );
+      router.push("/home");
     } catch (error) {
       alert("正しく入力してください");
     }

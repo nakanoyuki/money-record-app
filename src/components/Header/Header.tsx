@@ -1,8 +1,11 @@
 import { Button, Flex, Stack, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import { useAuthContext } from "../../hooks/AuthProvider";
+import Logout from "../Logout/Logout";
 
 export default function Header() {
+  const { user } = useAuthContext();
   return (
     <Stack as="header" position="fixed" backgroundColor="white" width="100%">
       <Text fontSize="xs" color="#707070" pl="16px">
@@ -17,21 +20,36 @@ export default function Header() {
         color="#4169e1"
         fontWeight="bold"
       >
-        <Link href="/">Money Record</Link>
-        <Flex alignItems="center" width="320px" justifyContent="space-between">
-          <Link href="/login">ログイン</Link>
-          <Button
-            as="a"
-            href="/register"
-            color="#4169e1"
-            border="solid 2px #4169e1"
-            borderRadius="20px"
-            width="fit-content"
-            backgroundColor="white"
-          >
-            新規アカウントを作成する
-          </Button>
-        </Flex>
+        {user ? (
+          <>
+            <Link href="/home">Money Record</Link>
+            <Flex alignItems="center" justifyContent="space-between">
+              <Logout />
+            </Flex>
+          </>
+        ) : (
+          <>
+            <Link href="/">Money Record</Link>
+            <Flex
+              alignItems="center"
+              width="320px"
+              justifyContent="space-between"
+            >
+              <Link href="/login">ログイン</Link>
+              <Button
+                as="a"
+                href="/register"
+                color="#4169e1"
+                border="solid 2px #4169e1"
+                borderRadius="20px"
+                width="fit-content"
+                backgroundColor="white"
+              >
+                新規アカウントを作成する
+              </Button>
+            </Flex>
+          </>
+        )}
       </Flex>
     </Stack>
   );

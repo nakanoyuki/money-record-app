@@ -10,23 +10,19 @@ import {
   Heading,
   Input,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (currentUser: any) => {
-      setUser(currentUser);
-    });
-  });
-
+  const router = useRouter();
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      router.push("/home");
     } catch (error) {
       alert("メールアドレスまたはパスワードが間違っています");
     }

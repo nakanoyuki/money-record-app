@@ -1,29 +1,13 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { useAuthContext } from "../../src/hooks/AuthProvider";
 import Login from "../login";
+import InputRecordForm from "../../src/components/InputRecordForm/InputRecordForm";
 
 function Home() {
   const { user } = useAuthContext();
-  return (
-    <>
-      {user ? (
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          width="1200px"
-          maxW="100%"
-          m="auto"
-        >
-          Homeのフォーム
-        </Flex>
-      ) : (
-        <>
-          <Login />
-        </>
-      )}
-    </>
-  );
+
+  return <>{user ? <InputRecordForm /> : <Login />}</>;
 }
 
 export default Home;

@@ -1,13 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { useAuthContext } from "../../src/hooks/AuthProvider";
-import Login from "../login";
-import InputRecordForm from "../../src/components/InputRecordForm/InputRecordForm";
+import { DisplayRecord } from "../../src/components/DisplayRecord";
 
 function Home() {
-  const { user } = useAuthContext();
-
-  return <>{user ? <InputRecordForm /> : <Login />}</>;
+  return <DisplayRecord />;
 }
 
 export default Home;

@@ -6,7 +6,6 @@ import { auth } from "../../../lib/firebaseConfig";
 
 const Logout = () => {
   const router = useRouter();
-  const { user } = useAuthContext();
 
   const handleLogout = async () => {
     await signOut(auth);

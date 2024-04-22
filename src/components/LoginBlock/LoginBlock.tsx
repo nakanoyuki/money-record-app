@@ -31,6 +31,8 @@ const LoginBlock = () => {
     }
     setIsLoading(false);
   };
+
+  const isError = loginEmail === "" || loginPassword === "";
   return (
     <>
       {isLoading ? (
@@ -58,7 +60,7 @@ const LoginBlock = () => {
               ログイン
             </Heading>
             <form onSubmit={handleSubmit}>
-              <FormControl isRequired mt={4}>
+              <FormControl isRequired mt={4} isInvalid={isError}>
                 <FormLabel fontSize="sm">メールアドレス</FormLabel>
                 <Input
                   placeholder="sample@sample.com"
@@ -70,11 +72,13 @@ const LoginBlock = () => {
                   padding={2}
                   onChange={(e) => setLoginEmail(e.target.value)}
                 />
-                <FormErrorMessage>
-                  メールアドレスを入力してください
-                </FormErrorMessage>
+                {isError && (
+                  <FormErrorMessage>
+                    メールアドレスを入力してください
+                  </FormErrorMessage>
+                )}
               </FormControl>
-              <FormControl isRequired mt={4}>
+              <FormControl isRequired mt={4} isInvalid={isError}>
                 <FormLabel fontSize="sm">パスワード</FormLabel>
                 <Input
                   placeholder="********"
@@ -86,9 +90,11 @@ const LoginBlock = () => {
                   padding={2}
                   onChange={(e) => setLoginPassword(e.target.value)}
                 />
-                <FormErrorMessage>
-                  パスワードを入力してください
-                </FormErrorMessage>
+                {isError && (
+                  <FormErrorMessage>
+                    パスワードを入力してください
+                  </FormErrorMessage>
+                )}
               </FormControl>
               <Button
                 fontSize="lg"

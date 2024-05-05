@@ -5,13 +5,7 @@ const InputRecordFormHeading = () => {
   const currentDate = new Date();
   const getCurrentMonth = currentDate.getMonth() + 1;
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      width="1200px"
-      maxW="100%"
-      m="auto"
-    >
+    <Flex>
       <Text fontSize="md">今月{getCurrentMonth}月の収支</Text>
     </Flex>
   );

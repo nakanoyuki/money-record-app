@@ -5,4 +5,4 @@ const RecordList = () => {
   return <RecordLists />;
 };
 
-export default RecordLists;
+export default RecordList;

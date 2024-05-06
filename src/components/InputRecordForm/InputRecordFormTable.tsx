@@ -16,9 +16,9 @@ import { addPaymentDateToFirebase } from "../../utils/addPaymentDateToFirebase";
 const InputRecordFormTable = () => {
   const [date, setDate] = useState(new Date());
   const [amount, setAmount] = useState("");
-  const [type, setType] = useState("");
-  const [category, setCategory] = useState("");
-  const [paymentType, setPaymentType] = useState("");
+  const [type, setType] = useState("支出");
+  const [category, setCategory] = useState("交通費");
+  const [paymentType, setPaymentType] = useState("現金");
   const [description, setDescription] = useState("");
 
   const currentDate = new Date();
@@ -67,7 +67,7 @@ const InputRecordFormTable = () => {
       uid: auth.currentUser?.uid,
     };
 
-    addPaymentDateToFirebase(paymentData); // フォームデータをFirebaseに追加
+    addPaymentDateToFirebase(paymentData);
 
     // フォームの入力をリセット
     setDate(new Date());

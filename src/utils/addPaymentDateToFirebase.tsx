@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../lib/firebaseConfig";
 
-type PaymentData = {
+export type PaymentData = {
   date: Date;
   amount: string;
   type: string;

@@ -8,8 +8,6 @@ import {
   Button,
   Select,
   Flex,
-  Text,
-  Box,
 } from "@chakra-ui/react";
 
 const InputRecordFormTable = () => {
@@ -45,81 +43,76 @@ const InputRecordFormTable = () => {
   };
 
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center">
-      <Box w="80%">
-        <Text fontSize="md">収支登録</Text>
-        <Flex
-          direction="column"
-          padding={8}
-          rounded={6}
-          background="gray.100"
-          backgroundColor="white"
-        >
-          <form onSubmit={handleSubmit}>
-            <Flex>
-              <FormControl mb="4">
-                <FormLabel>購入日時</FormLabel>
-                <DatePicker selected={date} onChange={handleDateChange} />
-              </FormControl>
-              <FormControl mb="4">
-                <FormLabel>金額</FormLabel>
-                <Input
-                  type="number"
-                  value={amount}
-                  onChange={handleAmountChange}
-                  placeholder="金額を入力してください"
-                />
-              </FormControl>
-            </Flex>
-            <Flex>
-              <FormControl mb="4">
-                <FormLabel>収支タイプ</FormLabel>
-                <Select value={type} onChange={handleTypeChange}>
-                  <option value="expense">支出</option>
-                  <option value="income">収入</option>
-                </Select>
-              </FormControl>
-              <FormControl mb="4">
-                <FormLabel>カテゴリー</FormLabel>
-                <Select value={type} onChange={handleTypeChange}>
-                  <option value="">交通費</option>
-                  <option value="">日用品</option>
-                </Select>
-              </FormControl>
-            </Flex>
-            <Flex>
-              <FormControl mb="4">
-                <FormLabel>支払い方法</FormLabel>
-                <Select value={type} onChange={handleTypeChange}>
-                  <option value="">現金</option>
-                  <option value="">クレジット</option>
-                  <option value="">マネー</option>
-                </Select>
-              </FormControl>
-              <FormControl mb="4">
-                <FormLabel>説明</FormLabel>
-                <Input
-                  type="text"
-                  value={description}
-                  onChange={handleDescriptionChange}
-                  placeholder="説明を入力してください"
-                />
-              </FormControl>
-            </Flex>
-
-            <Button
-              fontSize="lg"
-              mt={4}
-              w="100%"
-              backgroundColor="#4169e1"
-              color="white"
-              type="submit"
-            >
-              送信
-            </Button>
-          </form>
+    <Flex
+      direction="column"
+      padding={8}
+      rounded={6}
+      background="gray.100"
+      backgroundColor="white"
+    >
+      <form onSubmit={handleSubmit}>
+        <Flex>
+          <FormControl mb="4">
+            <FormLabel>購入日時</FormLabel>
+            <DatePicker selected={date} onChange={handleDateChange} />
+          </FormControl>
+          <FormControl mb="4">
+            <FormLabel>金額</FormLabel>
+            <Input
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="金額を入力してください"
+            />
+          </FormControl>
         </Flex>
-      </Box>
+        <Flex>
+          <FormControl mb="4">
+            <FormLabel>収支タイプ</FormLabel>
+            <Select value={type} onChange={handleTypeChange}>
+              <option value="expense">支出</option>
+              <option value="income">収入</option>
+            </Select>
+          </FormControl>
+          <FormControl mb="4">
+            <FormLabel>カテゴリー</FormLabel>
+            <Select value={type} onChange={handleTypeChange}>
+              <option value="">交通費</option>
+              <option value="">日用品</option>
+            </Select>
+          </FormControl>
+        </Flex>
+        <Flex>
+          <FormControl mb="4">
+            <FormLabel>支払い方法</FormLabel>
+            <Select value={type} onChange={handleTypeChange}>
+              <option value="">現金</option>
+              <option value="">クレジット</option>
+              <option value="">マネー</option>
+            </Select>
+          </FormControl>
+          <FormControl mb="4">
+            <FormLabel>説明</FormLabel>
+            <Input
+              type="text"
+              value={description}
+              onChange={handleDescriptionChange}
+              placeholder="説明を入力してください"
+            />
+          </FormControl>
+        </Flex>
+
+        <Button
+          fontSize="lg"
+          mt={4}
+          w="100%"
+          backgroundColor="#4169e1"
+          color="white"
+          type="submit"
+        >
+          送信
+        </Button>
+      </form>
     </Flex>
   );
 };

@@ -23,9 +23,10 @@ export default function Header() {
         {user ? (
           <>
             <Link href="/home">Money Record</Link>
-            <Flex alignItems="center" justifyContent="space-between">
+            <Flex alignItems="center" justifyContent="space-between" w="340px">
               <Link href="/home">ホーム</Link>
               <Link href="/input-form">収支登録</Link>
+              <Link href="/record-list">収支一覧</Link>
               <Logout />
             </Flex>
           </>

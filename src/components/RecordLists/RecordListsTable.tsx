@@ -1,52 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Table, Thead, Tbody, Tr, Th, Td, Box, Flex } from "@chakra-ui/react";
-import {
-  CollectionReference,
-  Timestamp,
-  collection,
-  getDocs,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
-import { auth, db } from "../../../lib/firebaseConfig";
-
-export type FormType = {
-  id: string;
-  date: Timestamp;
-  amount: string;
-  type: string;
-  category: string;
-  paymentType: string;
-  description: string;
-  uid: string | undefined;
-};
+import useFetchPaymentsData from "../../hooks/useFetchPaymentsData";
 
 const RecordListsTable = () => {
-  const [payments, setPayments] = useState<FormType[]>([]);
+  const { payments, loading, error } = useFetchPaymentsData();
 
-  useEffect(() => {
-    const fetchPayments = async () => {
-      try {
-        const listsRef = collection(
-          db,
-          "recordlist"
-        ) as CollectionReference<FormType>;
-        const data = await getDocs(
-          query(
-            listsRef,
-            where("uid", "==", auth.currentUser?.uid),
-            orderBy("date", "desc")
-          )
-        );
-        setPayments(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      } catch (error) {
-        console.error("Error fetching Payments:", error);
-      }
-    };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-    fetchPayments();
-  }, []);
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <Flex

@@ -23,10 +23,10 @@ export type FormType = {
 };
 
 const RecordListsTable = () => {
-  const [expenses, setExpenses] = useState<FormType[]>([]);
+  const [payments, setPayments] = useState<FormType[]>([]);
 
   useEffect(() => {
-    const fetchExpenses = async () => {
+    const fetchPayments = async () => {
       try {
         const listsRef = collection(
           db,
@@ -39,13 +39,13 @@ const RecordListsTable = () => {
             orderBy("date", "desc")
           )
         );
-        setExpenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+        setPayments(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
       } catch (error) {
-        console.error("Error fetching expenses:", error);
+        console.error("Error fetching Payments:", error);
       }
     };
 
-    fetchExpenses();
+    fetchPayments();
   }, []);
 
   return (
@@ -69,14 +69,14 @@ const RecordListsTable = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {expenses.map((expense) => (
-              <Tr key={expense.id}>
-                <Td>{expense.date.toDate().toLocaleString()}</Td>
-                <Td>{expense.amount}円</Td>
-                <Td>{expense.type}</Td>
-                <Td>{expense.category}</Td>
-                <Td>{expense.paymentType}</Td>
-                <Td>{expense.description}</Td>
+            {payments.map((payment) => (
+              <Tr key={payment.id}>
+                <Td>{payment.date.toDate().toLocaleString()}</Td>
+                <Td>{payment.amount}円</Td>
+                <Td>{payment.type}</Td>
+                <Td>{payment.category}</Td>
+                <Td>{payment.paymentType}</Td>
+                <Td>{payment.description}</Td>
               </Tr>
             ))}
           </Tbody>

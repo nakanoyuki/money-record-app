@@ -5,10 +5,6 @@ import useFetchPaymentsData from "../../hooks/useFetchPaymentsData";
 const RecordListsTable = () => {
   const { payments, loading, error } = useFetchPaymentsData();
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>{error}</div>;
   }
